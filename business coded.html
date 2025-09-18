@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteSolutionsAI | AI-Powered Website Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #03102b;
+            --secondary: #000000;
+            --accent: #ffffff;
+            --light: #4f7092;
+            --gray: #9da8b9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--secondary);
+            line-height: 1.6;
+            background-color: #f1f5f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: color-mix(in srgb, var(--primary) 80%, black);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 5%, white) 0%, color-mix(in srgb, var(--accent) 5%, white) 100%);
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--gray);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 5%, white) 0%, color-mix(in srgb, var(--accent) 5%, white) 100%);
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            flex: 1;
+            padding: 0 1.5rem;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        /* Customization Panel */
+        .customization-panel {
+            position: fixed;
+            top: 50%;
+            right: -300px;
+            transform: translateY(-50%);
+            width: 300px;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 10px 0 0 10px;
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .customization-panel.open {
+            right: 0;
+        }
+        
+        .toggle-panel {
+            position: absolute;
+            left: -40px;
+            top: 20px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px 0 0 10px;
+            cursor: pointer;
+            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .color-picker {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .color-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .color-option input[type="color"] {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                margin-bottom: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .customization-panel {
+                width: 250px;
+                right: -250px;
+            }
+        }
+
+        /* Logo styling */
+        .logo-text {
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Customization Panel -->
+    <div class="customization-panel" id="customPanel">
+        <div class="toggle-panel" onclick="togglePanel()">
+            <i class="fas fa-palette"></i>
+        </div>
+        <h3>Customize Your Website</h3>
+        
+        <div class="color-picker">
+            <div class="color-option">
+                <input type="color" id="primaryColor" value="#2563eb" onchange="updateColor('primary', this.value)">
+                <label>Primary Color</label>
+            </div>
+            <div class="color-option">
+                <input type="color" id="secondaryColor" value="#0f172a" onchange="updateColor('secondary', this.value)">
+                <label>Secondary Color</label>
+            </div>
+            <div class="color-option">
+                <input type="color" id="accentColor" value="#22d3ee" onchange="updateColor('accent', this.value)">
+                <label>Accent Color</label>
+            </div>
+        </div>
+        
+        <button class="btn" onclick="resetColors()" style="width: 100%;">Reset to Default</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-img">SS</div>
+                    <span class="logo-text">SiteSolutionsAI</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>AI-Powered Solutions for Your Website</h1>
+                    <p>We help businesses integrate intelligent AI assistants to convert more visitors and automate support.</p>
+                    <a href="#contact" class="btn">Schedule a Free Consultation</a>
+                </div>
+                <div class="hero-image">
+                    <svg width="400" height="300" viewBox="0 0 500 400">
+                        <rect x="100" y="50" width="300" height="250" rx="10" fill="var(--primary)" opacity="0.2"/>
+                        <circle cx="250" cy="150" r="60" fill="var(--primary)" opacity="0.5"/>
+                        <path d="M200 250H300" stroke="var(--primary)" stroke-width="10"/>
+                        <path d="M220 280H280" stroke="var(--primary)" stroke-width="10"/>
+                        <circle cx="250" cy="150" r="30" fill="var(--accent)"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer tailored AI solutions to meet your specific business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Assistant Integration</h3>
+                    <p>Add intelligent AI chatbots to your website that can handle customer inquiries 24/7, provide personalized recommendations, and automate routine tasks.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Website Optimization</h3>
+                    <p>Enhance your website with AI-driven analytics, personalized content, and improved user experience to increase engagement and conversions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Business Process Automation</h3>
+                    <p>Streamline your operations with AI-powered tools that automate repetitive tasks, analyze data, and provide actionable insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Our simple process to transform your business with AI</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>We discuss your business needs and identify opportunities for AI integration.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Custom Solution Design</h3>
+                    <p>We develop a tailored AI strategy specifically for your business.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Implementation & Support</h3>
+                    <p>We integrate the solutions and provide ongoing maintenance and support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Contact us today for a free consultation and let's discuss how AI can help your business grow.</p>
+            <a href="#" class="btn">Schedule a Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-img">SS</div>
+                <span class="logo-text">SiteSolutionsAI</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p>© 2023 SiteSolutionsAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle customization panel
+        function togglePanel() {
+            document.getElementById('customPanel').classList.toggle('open');
+        }
+
+        // Update color scheme
+        function updateColor(type, value) {
+            document.documentElement.style.setProperty(`--${type}`, value);
+            
+            // Update color pickers to match
+            document.getElementById(`${type}Color`).value = value;
+        }
+
+        // Reset to default colors
+        function resetColors() {
+            updateColor('primary', '#2563eb');
+            updateColor('secondary', '#0f172a');
+            updateColor('accent', '#22d3ee');
+            
+            // Reset color pickers
+            document.getElementById('primaryColor').value = '#2563eb';
+            document.getElementById('secondaryColor').value = '#0f172a';
+            document.getElementById('accentColor').value = '#22d3ee';
+        }
+
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
